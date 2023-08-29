@@ -1,0 +1,64 @@
+project_name: gitlab-artifacts-cleaner
+
+before:
+  hooks:
+    - go mod download
+    
+builds:
+  - main: ./main.go
+    binary: gitlab-artifacts-cleaner 
+    ldflags:
+      - -extldflags="-static"
+    env:
+      - CGO_ENABLED=0 #  it tells the Go compiler to produce a statically linked binary without any dynamic library dependencies
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+
+archives:
+  - id: gitlab-artifacts-cleaner
+    name_template: |-
+      {{ .ProjectName }}-{{ .Os }}-{{ .Arch }}
+#    format: binary
+
+checksum:
+  name_template: 'gitlab_artifacts_cleaner_checksums.txt'
+  algorithm: sha256
+
+release:
+  prerelease: auto
+  draft: false
+  header: |
+    ## Quick Installation
+
+    **Download**: https://github.com/ankitcharolia/goenv/releases/tag/{{.Tag}}
+
+  footer: |
+    **Full Changelog**: https://github.com/ankitcharolia/goenv/compare/{{ .PreviousTag }}...{{ .Tag }}
+    
+
+changelog:
+  use:
+    github
+  sort: asc
+  abbrev: 0
+  groups: # Regex use RE2 syntax as defined here: https://github.com/google/re2/wiki/Syntax.
+    - title: 'Features'
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 100
+    - title: 'Bug fixes'
+      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
+      order: 200
+    - title: 'Documentation'
+      regexp: '^.*?docs(\([[:word:]]+\))??!?:.+$'
+      order: 300
+    - title: 'Dependency updates'
+      regexp: '^.*?(feat|fix|chore)\(deps?.+\)!?:.+$'
+      order: 400
+    - title: 'Other work'
+      order: 999
+  filters:
+    exclude:
+      - '^*.json:'
