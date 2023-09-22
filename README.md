@@ -26,13 +26,15 @@ wget -O - https://github.com/ankitcharolia/gitlab-artifacts-cleaner/releases/lat
 $ gitlab-artifacts-cleaner --help
 Usage: gitlab-artifacts-cleaner [flags] [<options>]
 Flags:
-  --help          goenv help command
-  --install       Install a specific version of GOLANG
-  --list          List all installed GOLANG versions
-  --list-remote   List all remote versions of GOLANG
-  --uninstall     Uninstall a specific version of GOLANG
-  --use           Use a specific version of GOLANG
+  --help          gitlab-artifacts-cleaner help command
+  --server        GitLab Server URL. Default: https://gitlab.com
+  --token         Your Personal Access Token.
+  --project-id    Project ID or Project Path.
+```
+
+```bash
+gitlab-artifacts-cleaner --server https://gitlab.com --token <token> --project_id <project_id>
 ```
 
 ## Support
-Feel free to create an Issue/Pull Request if you find any bug with `goenv`
+Feel free to create an Issue/Pull Request if you find any bug with `gitlab-artifacts-cleaner`

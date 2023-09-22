@@ -16,6 +16,11 @@ builds:
       - darwin
     goarch:
       - amd64
+      - arm64
+      - arm
+    ignore:
+      - goos: darwin
+        goarch: arm
 
 archives:
   - id: gitlab-artifacts-cleaner
@@ -33,10 +38,10 @@ release:
   header: |
     ## Quick Installation
 
-    **Download**: https://github.com/ankitcharolia/goenv/releases/tag/{{.Tag}}
+    **Download**: https://github.com/ankitcharolia/gitlab-artifacts-cleaner/releases/tag/{{.Tag}}
 
   footer: |
-    **Full Changelog**: https://github.com/ankitcharolia/goenv/compare/{{ .PreviousTag }}...{{ .Tag }}
+    **Full Changelog**: https://github.com/ankitcharolia/gitlab-artifacts-cleaner/compare/{{ .PreviousTag }}...{{ .Tag }}
     
 
 changelog:
