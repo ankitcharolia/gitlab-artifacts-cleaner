@@ -3,6 +3,8 @@ package cmd
 import (
 	"flag"
 	"fmt"
+	"net/http"
+	"os"
 	"strings"
 )
 
@@ -25,8 +27,41 @@ func Execute() {
 		})
 	}
 
+	if serverURL == "" || privateToken == "" || projectID == "" {
+		fmt.Println("Error: Missing required arguments.")
+		flag.Usage()
+		os.Exit(1)
+	}
+
 	// Show usage instructions if help flag is set
 	if *help {
 		flag.Usage()
+	}
+
+	// Construct the API URL for deleting artifacts
+	apiURL := fmt.Sprintf("%s/api/v4/projects/%s/artifacts", serverURL, projectID)
+
+	// Create an HTTP client with the provided private token
+	client := &http.Client{}
+	req, err := http.NewRequest(http.MethodDelete, apiURL, nil)
+	if err != nil {
+		fmt.Println("Error creating HTTP request:", err)
+		os.Exit(1)
+	}
+	req.Header.Set("Private-Token", privateToken)
+
+	// Send the DELETE request
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println("Error sending DELETE request:", err)
+		os.Exit(1)
+	}
+	defer resp.Body.Close()
+
+	// Check the response status code
+	if resp.StatusCode == http.StatusNoContent {
+		fmt.Println("Artifacts deleted successfully.")
+	} else {
+		fmt.Printf("Failed to delete artifacts. Status code: %d\n", resp.StatusCode)
 	}
 }

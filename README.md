@@ -8,7 +8,7 @@
 # Gitlab Artifacts Cleaner
 Gitlab Artifacts Cleaner is a command-line tool to cleanup Gitlab stored Artifacts
 
-**NOTE:** If you need to wipe out a Gitlab project's artifacts, this is the tool for you. **It will delete all the artifacts of the project, but It will NOT delete the project's repository.**
+**NOTE:** If you need to wipe out a Gitlab project's artifacts, this is the tool for you. **It will delete all the artifacts of the project, but It will NOT delete the project.**
 
 ## Installation
 **Releases**: https://github.com/ankitcharolia/gitlab-artifacts-cleaner/releases
@@ -37,6 +37,7 @@ Flags:
 ```bash
 gitlab-artifacts-cleaner --server https://gitlab.com --token <token> --project_id <project_id>
 ```
+**NOTE:** You must have at least the Maintainer role for the project.
 
 ## Support
 Feel free to create an Issue/Pull Request if you find any bug with `gitlab-artifacts-cleaner`
