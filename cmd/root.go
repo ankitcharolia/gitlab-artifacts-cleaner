@@ -3,6 +3,7 @@ package cmd
 import (
 	"flag"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -62,6 +63,6 @@ func Execute() {
 	if resp.StatusCode == http.StatusNoContent {
 		fmt.Println("Artifacts deleted successfully.")
 	} else {
-		fmt.Printf("Failed to delete artifacts. Status code: %d\n", resp.StatusCode)
+		log.Printf("Failed to delete artifacts. Status code: %d\n", resp.StatusCode)
 	}
 }
