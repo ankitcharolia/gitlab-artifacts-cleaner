@@ -15,7 +15,7 @@ Gitlab Artifacts Cleaner is a command-line tool to cleanup Gitlab stored Artifac
 
 **LINUX**
 ```shell
-sudo wget -O - https://github.com/ankitcharolia/gitlab-artifacts-cleaner/releases/latest/download/gitlab-artifacts-cleaner-linux-amd64.tar.gz | sudo tar -xz -C /usr/local/bin
+wget -O - https://github.com/ankitcharolia/gitlab-artifacts-cleaner/releases/latest/download/gitlab-artifacts-cleaner-linux-amd64.tar.gz | sudo tar -xz -C /usr/local/bin
 ```
 
 **MAC**
