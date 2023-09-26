@@ -28,10 +28,10 @@ wget -O - https://github.com/ankitcharolia/gitlab-artifacts-cleaner/releases/lat
 $ gitlab-artifacts-cleaner --help
 Usage: gitlab-artifacts-cleaner [flags] [<options>]
 Flags:
-  --help          gitlab-artifacts-cleaner help command
-  --server        GitLab Server URL. Default: https://gitlab.com
-  --token         Your Personal Access Token.
-  --project-id    Project ID or Project Path.
+  --help          gitlab-artifacts-cleaner Help Command
+  --project-id    GitLab Project ID
+  --server        GitLab Server URL (e.g., https://gitlab.com)
+  --token         GitLab Personal Access Token
 ```
 
 ```bash
